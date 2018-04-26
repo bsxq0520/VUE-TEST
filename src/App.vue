@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <form id="search">
+      add <input v-model="newTodoText" placeholder="new todo" @keydown.enter="addTodo">
       Search <input name="query" v-model="searchQuery">
     </form>
     <HelloWorld
@@ -15,17 +16,36 @@
 <script>
 import HelloWorld from './components/HelloWorld'
 
+let nextTodoId = 1
+
 export default {
   name: 'App',
   data () {
     return {
+      newTodoText: '',
       searchQuery: '',
       gridColumns: ['name', 'power'],
       gridData: [
-        { name: 'Chuck Norris', power: Infinity, id: 1 },
-        { name: 'Bruce Lee', power: 9000, id: 2 },
-        { name: 'Jackie Chan', power: 7000, id: 3 },
-        { name: 'Jet Li', power: 8000, id: 4 }
+        {
+          id: nextTodoId++,
+          name: 'Chuck Norris',
+          power: Infinity
+        },
+        {
+          id: nextTodoId++,
+          name: 'Bruce Lee',
+          power: 9000
+        },
+        {
+          id: nextTodoId++,
+          name: 'Jackie Chan',
+          power: 7000
+        },
+        {
+          id: nextTodoId++,
+          name: 'Jet Li',
+          power: 8000
+        }
       ]
     }
   },
@@ -33,6 +53,17 @@ export default {
     HelloWorld
   },
   methods: {
+    addTodo: function () {
+      const trimText = this.newTodoText.trim()
+      if (trimText) {
+        this.gridData.push({
+          id: nextTodoId++,
+          name: trimText,
+          power: 3200
+        })
+        this.newTodoText = ''
+      }
+    },
     removeTodo: function (id) {
       this.gridData = this.gridData.filter(todo => {
         return todo.id !== id
