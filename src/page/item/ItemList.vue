@@ -21,7 +21,7 @@
               {{ entry[key] }}
             </td>
             <td>
-              <button @click="$emit('remove', entry.id)">
+              <button @click="$emit('remove', entry)">
                 X
               </button>
             </td>
@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ItemList',
   props: {
     columns: Array,
     data: Array,
