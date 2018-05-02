@@ -26,7 +26,7 @@ import Modal from '../../components/Modal'
 let nextTodoId = 1
 
 export default {
-  name: 'Home',
+  name: 'Item',
   data () {
     return {
       delId: '',

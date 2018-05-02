@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Item',
+  name: 'Home',
   data () {
     return {}
   },
