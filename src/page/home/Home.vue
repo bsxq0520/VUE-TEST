@@ -2,6 +2,7 @@
  <div>
     xx:
     <router-link to="Item">todo-list</router-link>
+    <router-link to="Tabs">tabs</router-link>
  </div>
 </template>
 
