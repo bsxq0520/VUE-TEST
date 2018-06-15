@@ -22,6 +22,7 @@
 <script>
 import ItemList from './ItemList'
 import Modal from '../../components/Modal'
+import Bus from '../../common/js/bus.js'
 
 let nextTodoId = 1
 
@@ -63,6 +64,12 @@ export default {
   components: {
     ItemList,
     Modal
+  },
+  created () {
+    Bus.$on('remove', this.removeTodo)
+  },
+  beforeDestroy () {
+    Bus.$off('remove', this.removeTodo)
   },
   methods: {
     addTodo: function () {

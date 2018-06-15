@@ -21,7 +21,10 @@
               {{ entry[key] }}
             </td>
             <td>
-              <button @click="$emit('remove', entry)">
+              <!-- <button @click="$emit('remove', entry)">
+                X
+              </button> -->
+              <button @click="removeTodo(entry)">
                 X
               </button>
             </td>
@@ -32,6 +35,7 @@
 </template>
 
 <script>
+import Bus from '../../common/js/bus.js'
 export default {
   name: 'ItemList',
   props: {
@@ -81,6 +85,9 @@ export default {
     sortBy: function (key) {
       this.sortKey = key
       this.sortOrders[key] = this.sortOrders[key] * -1
+    },
+    removeTodo: function (entry) {
+      Bus.$emit('remove', entry)
     }
   }
 }

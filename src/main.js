@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 Vue.use(VueRouter)
+
 const router = new VueRouter({
   routes
 })
